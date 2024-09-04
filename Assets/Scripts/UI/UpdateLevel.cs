@@ -12,12 +12,12 @@ public class UpdateLevel : MonoBehaviour
     void OnEnable()
     {
         LevelSystem.OnLevelChanged += ChangeLevelText;
-        ClickerStats.OnClicked += ChangeProgressBar;
+        CoinStats.OnClicked += ChangeProgressBar;
     }
     void OnDisable()
     {
         LevelSystem.OnLevelChanged -= ChangeLevelText;
-        ClickerStats.OnClicked -= ChangeProgressBar;
+        CoinStats.OnClicked -= ChangeProgressBar;
     }
 
     private void ChangeLevelText(int level, int _pointsToUpdate)

@@ -9,11 +9,11 @@ public class UpdateTextWithStat : MonoBehaviour
     [SerializeField] string _textFormat = "Coins: {0}";
     void OnEnable()
     {
-        ClickerStats.OnChangeCoins += ChangeText;
+        CoinStats.OnChangeCoins += ChangeText;
     }
     void OnDisable()
     {
-        ClickerStats.OnChangeCoins -= ChangeText;
+        CoinStats.OnChangeCoins -= ChangeText;
     }
     private void ChangeText(int value)
     {

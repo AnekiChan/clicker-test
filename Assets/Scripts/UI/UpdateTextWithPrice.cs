@@ -10,28 +10,28 @@ public class UpdateTextWithPrice : MonoBehaviour
     [SerializeField] string _textFormat = "Coins: {0}";
     [SerializeField] private Text _priceText;
     [SerializeField] private GameObject _buyButton;
-    private UpgradeStat _upgradeStat;
+    private Stat _upgradedStat;
     void OnEnable()
     {
-        _upgradeStat = GetComponent<UpgradeStat>();
-        ClickerStats.OnStatUpgraded += ChangeText;
-        _upgradeStat.OnPriceChanged += ChangePrice;
+        //_upgradedStat = GetComponent<UpgradeStat>();
+        CoinStats.OnStatUpgraded += ChangeText;
+        //_upgradeStat.OnPriceChanged += ChangePrice;
     }
     void OnDisable()
     {
-        ClickerStats.OnStatUpgraded -= ChangeText;
-        _upgradeStat.OnPriceChanged -= ChangePrice;
+        CoinStats.OnStatUpgraded -= ChangeText;
+        //_upgradeStat.OnPriceChanged -= ChangePrice;
     }
-    private void ChangeText(StatsToUpgrade stat, int currentStat, bool isLastUpgrade)
+    private void ChangeText(Stat stat)
     {
-        if (_upgradeStat.Stat == stat)
+        if (_upgradedStat == stat)
         {
-            _text.text = string.Format(_textFormat, currentStat);
-            Debug.Log("Is last upgrade " + isLastUpgrade);
+            _text.text = string.Format(_textFormat, stat.CurrentStatValue);
+            Debug.Log("Is last upgrade " + ());
             if (isLastUpgrade)
             {
-                ClickerStats.OnStatUpgraded -= ChangeText;
-                _upgradeStat.OnPriceChanged -= ChangePrice;
+                CoinStats.OnStatUpgraded -= ChangeText;
+                _upgradedStat.OnPriceChanged -= ChangePrice;
                 _buyButton.SetActive(false);
             }
         }

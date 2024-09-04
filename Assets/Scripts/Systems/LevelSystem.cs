@@ -14,11 +14,11 @@ public class LevelSystem : MonoBehaviour
 
     void OnEnable()
     {
-        ClickerStats.OnClicked += AddPoints;
+        CoinStats.OnClicked += AddPoints;
     }
     void OnDisable()
     {
-        ClickerStats.OnClicked -= AddPoints;
+        CoinStats.OnClicked -= AddPoints;
     }
     void Start()
     {
@@ -34,7 +34,7 @@ public class LevelSystem : MonoBehaviour
     // добавляем монетыкак очки опыта
     private void AddPoints()
     {
-        _currentPoints += ClickerStats.CoinsPerClick;
+        _currentPoints += CoinStats.CoinsPerClick;
         if (_currentPoints >= _pointsToUpdate)
         {
             _currentLevel++;

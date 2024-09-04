@@ -15,6 +15,6 @@ public class ObjectToClick : MonoBehaviour
     private void OnMouseDown()
     {
         _animator.SetTrigger(_triggerName);
-        ClickerStats.OnClicked.Invoke();
+        CoinStats.OnClicked.Invoke();
     }
 }
