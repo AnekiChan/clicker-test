@@ -23,11 +23,10 @@ public class CoinsPerClickStat : Stat
 
     private int _upgradePrice = 0;
     public override int UpgradePrice => _upgradePrice;
-    [SerializeField] private float _priceMultiplier = 5f;
 
     private void Start()
     {
-        SetNewPrice();
+        //SetNewPrice();
     }
     private void OnEnable()
     {
@@ -47,13 +46,13 @@ public class CoinsPerClickStat : Stat
     {
         _currentUpgradeLevel++;
         _coinsPerClick = Mathf.RoundToInt(Mathf.Exp(_currentUpgradeLevel) * _coinsPerClickMultiplier);
-        SetNewPrice();
-        CommonEvents.Instance.OnStatUpgraded?.Invoke(this);
+        //SetNewPrice();
+        // CommonEvents.Instance.OnStatUpgraded?.Invoke(this);
         Debug.Log($"Coins per click chaneged: {_coinsPerClick}");
     }
 
-    private void SetNewPrice()
-    {
-        _upgradePrice = Mathf.RoundToInt(Mathf.Exp(_currentUpgradeLevel) * _priceMultiplier);
-    }
+    // private void SetNewPrice()
+    // {
+    //     _upgradePrice = Mathf.RoundToInt(Mathf.Exp(_currentUpgradeLevel) * _priceMultiplier);
+    // }
 }

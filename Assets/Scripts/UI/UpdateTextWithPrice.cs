@@ -14,27 +14,27 @@ public class UpdateTextWithPrice : MonoBehaviour
     void OnEnable()
     {
         //_upgradedStat = GetComponent<UpgradeStat>();
-        CoinStats.OnStatUpgraded += ChangeText;
+        CommonEvents.Instance.OnStatUpgraded += ChangeText;
         //_upgradeStat.OnPriceChanged += ChangePrice;
     }
     void OnDisable()
     {
-        CoinStats.OnStatUpgraded -= ChangeText;
+        CommonEvents.Instance.OnStatUpgraded -= ChangeText;
         //_upgradeStat.OnPriceChanged -= ChangePrice;
     }
     private void ChangeText(Stat stat)
     {
-        if (_upgradedStat == stat)
-        {
-            _text.text = string.Format(_textFormat, stat.CurrentStatValue);
-            Debug.Log("Is last upgrade " + ());
-            if (isLastUpgrade)
-            {
-                CoinStats.OnStatUpgraded -= ChangeText;
-                _upgradedStat.OnPriceChanged -= ChangePrice;
-                _buyButton.SetActive(false);
-            }
-        }
+        // if (_upgradedStat == stat)
+        // {
+        //     _text.text = string.Format(_textFormat, stat.CurrentStatValue);
+        //     Debug.Log("Is last upgrade " + ());
+        //     if ()
+        //     {
+        //         CoinStats.OnStatUpgraded -= ChangeText;
+        //         _upgradedStat.OnPriceChanged -= ChangePrice;
+        //         _buyButton.SetActive(false);
+        //     }
+        // }
     }
     
     private void ChangePrice(int price)
