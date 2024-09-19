@@ -11,20 +11,21 @@ public class UpdateLevel : MonoBehaviour
 
     void OnEnable()
     {
-        LevelSystem.OnLevelChanged += ChangeLevelText;
-        CoinStats.OnClicked += ChangeProgressBar;
+        CommonEvents.Instance.OnLevelChanged += ChangeLevelText;
+        CommonEvents.Instance.OnClicked += ChangeProgressBar;
     }
     void OnDisable()
     {
-        LevelSystem.OnLevelChanged -= ChangeLevelText;
-        CoinStats.OnClicked -= ChangeProgressBar;
+        CommonEvents.Instance.OnLevelChanged -= ChangeLevelText;
+        CommonEvents.Instance.OnClicked -= ChangeProgressBar;
     }
 
-    private void ChangeLevelText(int level, int _pointsToUpdate)
+    private void ChangeLevelText(int level, int _pointsToUpdate, int currentPoints)
     {
         _levelText.text = string.Format(_textFormat, level);
-        _progressBar.value = 0;
         _progressBar.maxValue = _pointsToUpdate;
+        //_progressBar.value = currentPoints;
+        _progressBar.value = 0;
     }
 
     private void ChangeProgressBar()

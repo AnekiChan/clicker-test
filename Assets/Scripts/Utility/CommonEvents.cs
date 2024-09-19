@@ -15,6 +15,8 @@ public class CommonEvents : MonoBehaviour
 
     public Action OnClicked;
     public Action<int> OnChangedCoins;
-    public Action<Stat, int> OnChangeStats;
-    public Action<Stat> OnStatUpgraded;
+    public Action<Stat> OnStatUpgraded; // действия после обновления статов
+
+    public Action<int, int, int> OnLevelChanged; // действия на изменение уровня
+    public Action<int> OnLevelPointsAdded; // действия на добавление очков уровня
 }

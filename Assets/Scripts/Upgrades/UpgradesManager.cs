@@ -5,17 +5,29 @@ using UnityEngine;
 public class UpgradesManager: MonoBehaviour
 {
     [SerializeField] CoinStats _coinStats;
-    [SerializeField] private float _priceMultiplier = 5f;
-    [SerializeField] private Dictionary<Stat, int> _statsAndPrices = new Dictionary<Stat, int>();
+    [SerializeField] private List<Stat> _stats = new List<Stat>();
+
+    private void Start()
+    {
+        foreach (Stat stat in _stats)
+        {
+            CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
+        }
+    }
 
     public void TryToUpgrade(Stat stat)
     {
-        // pass
-        CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
-    }
-
-    private int CalculateNewPrice(Stat stat)
-    {
-        return Mathf.RoundToInt(Mathf.Exp(stat.CurrentUpgradeLevel) * _priceMultiplier);
+        int idx = _stats.IndexOf(stat);
+        if (idx != -1)
+        {
+            if (_coinStats.CurrentCoins >= stat.UpgradePrice)
+            {
+                _coinStats.RemoveCoins(stat.UpgradePrice);
+                stat.ApplyUpgrade();
+                CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
+            }
+            else Debug.Log("Not enough coins");
+        }
+        else Debug.LogError("Stat not found");
     }
 }

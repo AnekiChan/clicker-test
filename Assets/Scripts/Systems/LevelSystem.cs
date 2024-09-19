@@ -5,25 +5,26 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    public static Action<int, int> OnLevelChanged;
-    private int _currentLevel = 1;
+    [SerializeField] private CoinStats _coinStats;
+    [SerializeField] private float _multiplier = 10f;
+
     private static int _currentPoints = 0;
     public static int CurrentPoints => _currentPoints;
+    private int _currentLevel = 1;
     private int _pointsToUpdate;
-    [SerializeField] private float _multiplier = 10f;
 
     void OnEnable()
     {
-        CoinStats.OnClicked += AddPoints;
+        CommonEvents.Instance.OnLevelPointsAdded += AddPoints;
     }
     void OnDisable()
     {
-        CoinStats.OnClicked -= AddPoints;
+        CommonEvents.Instance.OnLevelPointsAdded -= AddPoints;
     }
     void Start()
     {
         CalculatePoitsForNewLevel();
-        OnLevelChanged?.Invoke(_currentLevel, _pointsToUpdate);
+        CommonEvents.Instance.OnLevelChanged?.Invoke(_currentLevel, _pointsToUpdate, _currentPoints);
     }
 
     private void CalculatePoitsForNewLevel()
@@ -31,16 +32,16 @@ public class LevelSystem : MonoBehaviour
         _pointsToUpdate = Mathf.FloorToInt(Mathf.Exp(_currentLevel) * _multiplier);
     }
 
-    // добавляем монетыкак очки опыта
-    private void AddPoints()
+    // добавляем монеты как очки опыта
+    private void AddPoints(int coins)
     {
-        _currentPoints += CoinStats.CoinsPerClick;
+        _currentPoints += coins;
         if (_currentPoints >= _pointsToUpdate)
         {
             _currentLevel++;
+            _currentPoints -= _pointsToUpdate;
             CalculatePoitsForNewLevel();
-            OnLevelChanged?.Invoke(_currentLevel, _pointsToUpdate);
-            _currentPoints = 0;
+            CommonEvents.Instance.OnLevelChanged?.Invoke(_currentLevel, _pointsToUpdate, _currentPoints);
         }
     }
 }

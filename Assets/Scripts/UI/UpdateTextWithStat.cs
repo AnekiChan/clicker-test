@@ -9,11 +9,11 @@ public class UpdateTextWithStat : MonoBehaviour
     [SerializeField] string _textFormat = "Coins: {0}";
     void OnEnable()
     {
-        CoinStats.OnChangeCoins += ChangeText;
+        CommonEvents.Instance.OnChangedCoins += ChangeText;
     }
     void OnDisable()
     {
-        CoinStats.OnChangeCoins -= ChangeText;
+        CommonEvents.Instance.OnChangedCoins -= ChangeText;
     }
     private void ChangeText(int value)
     {

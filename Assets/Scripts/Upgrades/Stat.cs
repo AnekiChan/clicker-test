@@ -8,7 +8,7 @@ public abstract class Stat : MonoBehaviour
     public abstract float CurrentStatValue { get; }
     public abstract bool CanBeUpgraded { get; }
     public abstract int CurrentUpgradeLevel { get; }
-    public abstract int MaxUpgradelevel { get; }
+    public abstract int MaxUpgradeLevel { get; }
     public abstract int UpgradePrice { get; }
     public abstract void ApplyUpgrade();
 }

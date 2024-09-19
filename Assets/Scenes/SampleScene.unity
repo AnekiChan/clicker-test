@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43636228}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -311,10 +311,9 @@ GameObject:
   m_Component:
   - component: {fileID: 143237798}
   - component: {fileID: 143237799}
-  - component: {fileID: 143237801}
   - component: {fileID: 143237800}
   m_Layer: 5
-  m_Name: Upgrade2
+  m_Name: Autoclick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,21 +382,6 @@ MonoBehaviour:
   _textFormat: Autoclicks every {0} sec
   _priceText: {fileID: 413139411}
   _buyButton: {fileID: 1342634481}
---- !u!114 &143237801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143237797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b58e42b797ed864ba8e0c1d0c6aa834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stat: 1
-  _hasMaxUpgradeLevel: 1
-  _maxUpgradeLevel: 10
 --- !u!1 &248914245
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +580,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 512989462}
   - {fileID: 573432649}
+  - {fileID: 1651092877}
   - {fileID: 949806706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -670,7 +656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 1
 --- !u!222 &280990959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -918,7 +904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 1
 --- !u!222 &413139412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1002,6 +988,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461202177}
   m_CullTransparentMesh: 1
+--- !u!1 &512989461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512989462}
+  - component: {fileID: 512989463}
+  m_Layer: 0
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &512989462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512989461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 251398941}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &512989463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512989461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ea0d88fd7520b4ba6afc5a6b6d4407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1104,9 +1134,8 @@ GameObject:
   m_Component:
   - component: {fileID: 573432649}
   - component: {fileID: 573432650}
-  - component: {fileID: 573432651}
   m_Layer: 0
-  m_Name: GameMachine
+  m_Name: CoinStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1139,21 +1168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee97af68e3dbd6347bdd2fc279991bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinsPerClickMultiplier: 2
-  _maxTimerForAutoCkick: 10
---- !u!114 &573432651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573432648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca83ec9f80848f40b1ec946237d8ffe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _multiplier: 5
 --- !u!1 &693364960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1354,72 @@ MonoBehaviour:
   _progressBar: {fileID: 389208749}
   _levelText: {fileID: 1306986623}
   _textFormat: lvl.{0}
+--- !u!1 &786015396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786015397}
+  - component: {fileID: 786015398}
+  - component: {fileID: 786015399}
+  m_Layer: 0
+  m_Name: Autoclick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786015397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786015396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 949806706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &786015398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786015396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b428357b82483741b5b35aeafc85e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinStats: {fileID: 573432650}
+  _canBeUpgraded: 1
+  _maxUpgradeLevel: 14
+  _maxTimerForAutoClick: 15
+  _priceMultiplier: 5
+--- !u!114 &786015399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786015396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1c53bc0ebdc8f4eb54648d526b1c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1527231740}
+  _textFormat: Autoclicks every {0} sec
+  _priceText: {fileID: 413139411}
+  _buyButton: {fileID: 1342634481}
 --- !u!1 &949806705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949806706}
+  - component: {fileID: 949806707}
   m_Layer: 0
   m_Name: UpgradesManager
   m_TagString: Untagged
@@ -1368,9 +1449,27 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1292551319}
+  - {fileID: 786015397}
   m_Father: {fileID: 251398941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949806707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949806705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ac1d681807ecc4db1000a28718648c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinStats: {fileID: 573432650}
+  _stats:
+  - {fileID: 1292551320}
+  - {fileID: 786015398}
 --- !u!1 &1282113764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1506,72 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1292551318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1292551319}
+  - component: {fileID: 1292551320}
+  - component: {fileID: 1292551321}
+  m_Layer: 0
+  m_Name: CoinsPerClick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1292551319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292551318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 949806706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292551320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292551318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b9437b6b628eb4c90dbb16b7c0a8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinStats: {fileID: 573432650}
+  _canBeUpgraded: 1
+  _maxUpgradeLevel: 10
+  _coinsPerClickMultiplier: 2
+  _priceMultiplier: 7
+--- !u!114 &1292551321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292551318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1c53bc0ebdc8f4eb54648d526b1c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 299365401}
+  _textFormat: 'Coins per click: {0}'
+  _priceText: {fileID: 280990958}
+  _buyButton: {fileID: 2006003323}
 --- !u!1 &1306986621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,13 +1734,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 143237801}
-        m_TargetAssemblyTypeName: UpgradeStat, Assembly-CSharp
-        m_MethodName: Upgrade
-        m_Mode: 1
+      - m_Target: {fileID: 949806707}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: TryToUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 786015398}
+          m_ObjectArgumentAssemblyTypeName: Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1704,10 +1869,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1418649603}
   - component: {fileID: 1418649604}
-  - component: {fileID: 1418649606}
   - component: {fileID: 1418649605}
   m_Layer: 5
-  m_Name: Upgrade1
+  m_Name: CoinsPerClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,21 +1940,6 @@ MonoBehaviour:
   _textFormat: 'Coins per click: {0}'
   _priceText: {fileID: 280990958}
   _buyButton: {fileID: 0}
---- !u!114 &1418649606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418649602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b58e42b797ed864ba8e0c1d0c6aa834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stat: 0
-  _hasMaxUpgradeLevel: 0
-  _maxUpgradeLevel: 10
 --- !u!1 &1527231738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,6 +2192,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 1548026409}
   _textFormat: 'coins: {0}'
+--- !u!1 &1651092876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651092877}
+  - component: {fileID: 1651092878}
+  m_Layer: 0
+  m_Name: LevelSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651092877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651092876}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 251398941}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651092878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651092876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca83ec9f80848f40b1ec946237d8ffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinStats: {fileID: 573432650}
+  _multiplier: 5
 --- !u!1 &2006003323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,13 +2321,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418649606}
-        m_TargetAssemblyTypeName: UpgradeStat, Assembly-CSharp
-        m_MethodName: Upgrade
-        m_Mode: 1
+      - m_Target: {fileID: 949806707}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: TryToUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1292551320}
+          m_ObjectArgumentAssemblyTypeName: Stat, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2182,6 +2377,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 693364964}
+  - {fileID: 251398941}
   - {fileID: 248914247}
   - {fileID: 43636231}
-  - {fileID: 251398941}

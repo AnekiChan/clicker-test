@@ -13,21 +13,22 @@ public class AutoclickStat : Stat
     [SerializeField] private bool _canBeUpgraded;
     public override bool CanBeUpgraded => _canBeUpgraded;
     [SerializeField] int _maxUpgradeLevel;
-    public override int MaxUpgradelevel => _maxUpgradeLevel;
+    public override int MaxUpgradeLevel => _maxUpgradeLevel;
     private int _currentUpgradeLevel = 0;
     public override int CurrentUpgradeLevel => _currentUpgradeLevel;
 
     [SerializeField] private int _maxTimerForAutoClick = 10;
     private int _minTimerForAutoClick = 1;
 
+    // цена
     private int _upgradePrice = 0;
     public override int UpgradePrice => _upgradePrice;
     [SerializeField] private float _priceMultiplier = 5f;
     
     private void Start()
     {
-        _currentTimerForAutoClick = _maxTimerForAutoClick;
         SetNewPrice();
+        _currentTimerForAutoClick = _maxTimerForAutoClick;
         StartCoroutine(Autoclick());
     }
     
@@ -44,9 +45,9 @@ public class AutoclickStat : Stat
     {
         if ((_maxTimerForAutoClick - _currentUpgradeLevel) >= _minTimerForAutoClick) 
         {  
+            _currentUpgradeLevel++;
             _currentTimerForAutoClick = _maxTimerForAutoClick - _currentUpgradeLevel;
             SetNewPrice();
-            CommonEvents.Instance.OnStatUpgraded?.Invoke(this);
             Debug.Log($"Timer for autoclick chaneged: {_currentTimerForAutoClick}");
         }
     }
