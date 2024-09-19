@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Stats;
-using Unity.VisualScripting;
 
-public class CoinsPerClickStat : Stat
+public class DoubleClickChanceStat : Stat
 {
+    [SerializeField] private CoinsPerClickStat _coinsPerClickStat;
+
     [SerializeField] private CoinStats _coinStats;
     public override CoinStats CoinStats => _coinStats;
 
-    private static int _coinsPerClick = 1;
-    public override float CurrentStatValue => _coinsPerClick;
+    [SerializeField] private float _chanceToDoubleClick = 0.1f;
+    public override float CurrentStatValue => _chanceToDoubleClick;
 
     [SerializeField] private bool _canBeUpgraded = true;
     public override bool CanBeUpgraded => _canBeUpgraded;
@@ -19,9 +19,6 @@ public class CoinsPerClickStat : Stat
     [SerializeField] private int _maxUpgradeLevel = 10;
     public override int MaxUpgradeLevel => _maxUpgradeLevel;
 
-    [SerializeField] private float _coinsPerClickMultiplier = 10f;
-
-    // цена
     private int _upgradePrice = 0;
     public override int UpgradePrice => _upgradePrice;
     [SerializeField] private float _priceMultiplier = 5f;
@@ -29,29 +26,28 @@ public class CoinsPerClickStat : Stat
     private void Start()
     {
         SetNewPrice();
-    }
-
-    private void OnEnable()
-    {
-        CommonEvents.Instance.OnClicked += Click;
+        CommonEvents.Instance.OnClicked += DoubleClick;
     }
 
     private void OnDisable()
     {
-        CommonEvents.Instance.OnClicked -= Click;
+        CommonEvents.Instance.OnClicked -= DoubleClick;
     }
 
-    private void Click()
+    private void DoubleClick()
     {
-        _coinStats.ChangeCoinsValue(_coinsPerClick);
+        if (Random.Range(0f, 1f) < _chanceToDoubleClick)
+        {
+            _coinStats.ChangeCoinsValue(_coinsPerClickStat.CurrentStatValue);
+            CommonEvents.Instance.OnPartclesStarted?.Invoke();
+        }
     }
-
     public override void ApplyUpgrade()
     {
         _currentUpgradeLevel++;
-        _coinsPerClick = Mathf.RoundToInt(Mathf.Exp(_currentUpgradeLevel) * _coinsPerClickMultiplier);
+        _chanceToDoubleClick += 0.1f;
         SetNewPrice();
-        Debug.Log($"Coins per click chaneged: {_coinsPerClick}");
+        Debug.Log($"Chance to double click chaneged: {_chanceToDoubleClick}");
     }
 
     private void SetNewPrice()

@@ -14,7 +14,7 @@ public class ChangeCircleColor : MonoBehaviour
         CommonEvents.Instance.OnLevelChanged -= ChangeColor;
     }
 
-    private void ChangeColor(int level, int _pointsToUpdate, int currentPoints)
+    private void ChangeColor(float level, float _pointsToUpdate, float currentPoints)
     {
         GetComponent<SpriteRenderer>().color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1f);
     }

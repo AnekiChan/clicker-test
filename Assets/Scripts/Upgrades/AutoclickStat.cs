@@ -24,27 +24,28 @@ public class AutoclickStat : Stat
     private int _upgradePrice = 0;
     public override int UpgradePrice => _upgradePrice;
     [SerializeField] private float _priceMultiplier = 5f;
-    
+
     private void Start()
     {
         SetNewPrice();
         _currentTimerForAutoClick = _maxTimerForAutoClick;
         StartCoroutine(Autoclick());
     }
-    
+
     private IEnumerator Autoclick()
     {
         while (true)
         {
+            CommonEvents.Instance.OnAutoclickTimerStart?.Invoke(_currentTimerForAutoClick);
             yield return new WaitForSeconds(_currentTimerForAutoClick);
             CommonEvents.Instance.OnClicked?.Invoke();
         }
     }
-    
+
     public override void ApplyUpgrade()
     {
-        if ((_maxTimerForAutoClick - _currentUpgradeLevel) >= _minTimerForAutoClick) 
-        {  
+        if ((_maxTimerForAutoClick - _currentUpgradeLevel) >= _minTimerForAutoClick)
+        {
             _currentUpgradeLevel++;
             _currentTimerForAutoClick = _maxTimerForAutoClick - _currentUpgradeLevel;
             SetNewPrice();

@@ -15,7 +15,7 @@ public class UpdateTextWithStat : MonoBehaviour
     {
         CommonEvents.Instance.OnChangedCoins -= ChangeText;
     }
-    private void ChangeText(int value)
+    private void ChangeText(float value)
     {
         _text.text = string.Format(_textFormat, value);
     }

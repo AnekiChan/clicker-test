@@ -6,17 +6,18 @@ using Stats;
 
 public class CoinStats : MonoBehaviour
 {
-    private int _currentCoins = 0;
-    public int CurrentCoins => _currentCoins;
+    private float _currentCoins = 0;
+    public float CurrentCoins => _currentCoins;
 
-    public void ChangeCoinsValue(int coins)
+    public void ChangeCoinsValue(float coins)
     {
+        CommonEvents.Instance.OnCoinsAdded?.Invoke(_currentCoins, coins);
         _currentCoins += coins;
         CommonEvents.Instance.OnLevelPointsAdded?.Invoke(coins);
         CommonEvents.Instance.OnChangedCoins?.Invoke(_currentCoins);
     }
 
-    public void RemoveCoins(int coins)
+    public void RemoveCoins(float coins)
     {
         _currentCoins -= coins;
         CommonEvents.Instance.OnChangedCoins?.Invoke(_currentCoins);

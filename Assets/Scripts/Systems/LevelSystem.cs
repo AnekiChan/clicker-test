@@ -8,8 +8,8 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private CoinStats _coinStats;
     [SerializeField] private float _multiplier = 10f;
 
-    private static int _currentPoints = 0;
-    public static int CurrentPoints => _currentPoints;
+    private static float _currentPoints = 0;
+    public static float CurrentPoints => _currentPoints;
     private int _currentLevel = 1;
     private int _pointsToUpdate;
 
@@ -33,9 +33,10 @@ public class LevelSystem : MonoBehaviour
     }
 
     // добавляем монеты как очки опыта
-    private void AddPoints(int coins)
+    private void AddPoints(float coins)
     {
         _currentPoints += coins;
+        CommonEvents.Instance.OnLevelPointsChaneged?.Invoke();
         if (_currentPoints >= _pointsToUpdate)
         {
             _currentLevel++;
