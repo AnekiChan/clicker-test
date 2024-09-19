@@ -9,10 +9,10 @@ public class UpgradesManager: MonoBehaviour
 
     private void Start()
     {
-        foreach (Stat stat in _stats)
-        {
-            CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
-        }
+        // foreach (Stat stat in _stats)
+        // {
+        //     CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
+        // }
     }
 
     public void TryToUpgrade(Stat stat)
@@ -24,7 +24,7 @@ public class UpgradesManager: MonoBehaviour
             {
                 _coinStats.RemoveCoins(stat.UpgradePrice);
                 stat.ApplyUpgrade();
-                CommonEvents.Instance.OnStatUpgraded?.Invoke(stat);
+                CommonEvents.Instance.OnStatUpgraded?.Invoke();
             }
             else Debug.Log("Not enough coins");
         }

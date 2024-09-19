@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeCircleColor : MonoBehaviour
 {
-    void OnEnable()
+    void Start()
     {
         CommonEvents.Instance.OnLevelChanged += ChangeColor;
     }
