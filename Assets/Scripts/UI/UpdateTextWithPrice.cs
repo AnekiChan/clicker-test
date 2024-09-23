@@ -11,6 +11,9 @@ public class UpdateTextWithPrice : MonoBehaviour
     [SerializeField] private Text _priceText;
     [SerializeField] private GameObject _buyButton;
     private Stat _upgradedStat;
+
+    private BigNumber _paramBigNumber = new BigNumber();
+    private BigNumber _priceBigNumber = new BigNumber();
     void Start()
     {
         _upgradedStat = GetComponent<Stat>();
@@ -32,8 +35,11 @@ public class UpdateTextWithPrice : MonoBehaviour
         }
         else
         {
-            _text.text = string.Format(_textFormat, _upgradedStat.CurrentStatValue);
-            _priceText.text = _upgradedStat.UpgradePrice.ToString();
+            _paramBigNumber.UpdateNumber(_upgradedStat.CurrentStatValue);
+            _text.text = string.Format(_textFormat, _paramBigNumber.FormatNumber());
+
+            _priceBigNumber.UpdateNumber(_upgradedStat.UpgradePrice);
+            _priceText.text = _priceBigNumber.FormatNumber();
         }
 
     }

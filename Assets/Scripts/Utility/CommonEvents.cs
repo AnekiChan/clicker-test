@@ -15,7 +15,7 @@ public class CommonEvents : MonoBehaviour
 
     public Action OnClicked;
     public Action<float> OnChangedCoins;
-    public Action<BigNumber, float> OnCoinsAdded;
+    public Action<float, float> OnCoinsAdded;
     public Action OnStatUpgraded; // действия после обновления статов
 
     public Action<int> OnAutoclickTimerStart;

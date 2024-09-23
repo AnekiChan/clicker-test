@@ -57,6 +57,12 @@ public class BigNumber
         }
     }
 
+    public string FormatNumber()
+    {
+        if (_prefixIndex == 0) return _currentNumber.ToString("0");
+        else return _currentNumber.ToString("0.00") + Prefix;
+    }
+
     public string FormatNumber(float num)
     {
         if (_prefixIndex == 0) return num.ToString("0");
