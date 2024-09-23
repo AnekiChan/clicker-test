@@ -26,7 +26,7 @@ public class UpdateLevel : MonoBehaviour
     {
         _levelText.text = string.Format(_textFormat, level);
         _progressBar.maxValue = _pointsToUpdate;
-        _progressBar.value = 0;
+        _progressBar.value = _pointsToUpdate;
     }
 
     private void ChangeProgressBar()

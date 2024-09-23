@@ -20,18 +20,20 @@ public class UpdateNumbers : MonoBehaviour
         CommonEvents.Instance.OnCoinsAdded -= StartUpdatingText;
     }
 
-    private void StartUpdatingText(float currentCoins, float addedCoins)
+    private void StartUpdatingText(BigNumber currentCoins, float addedCoins)
     {
         StartCoroutine(NumbersAnimation(currentCoins, addedCoins));
     }
 
-    private IEnumerator NumbersAnimation(float currentCoins, float addedCoins)
+    private IEnumerator NumbersAnimation(BigNumber currentBigNum, float addedCoins)
     {
         float time = 0;
         while (time < timeToMakeFull)
         {
             time += Time.deltaTime;
-            _text.text = string.Format(_textFormat, Convert.ToInt32(Mathf.Lerp(currentCoins, currentCoins + addedCoins, time / timeToMakeFull)).ToString());
+            _text.text = string.Format(_textFormat,
+                currentBigNum.FormatNumber(
+                Mathf.Lerp(currentBigNum.CurrentNumber - addedCoins / currentBigNum.GetDivision(), currentBigNum.CurrentNumber, time / timeToMakeFull)));
             yield return null;
         }
     }

@@ -30,18 +30,20 @@ public class LevelSystem : MonoBehaviour
     private void CalculatePoitsForNewLevel()
     {
         _pointsToUpdate = Mathf.FloorToInt(Mathf.Exp(_currentLevel) * _multiplier);
+        _currentPoints = _pointsToUpdate;
     }
 
     // добавляем монеты как очки опыта
     private void AddPoints(float coins)
     {
-        _currentPoints += coins;
+        _currentPoints -= coins;
         CommonEvents.Instance.OnLevelPointsChaneged?.Invoke();
-        if (_currentPoints >= _pointsToUpdate)
+        if (_currentPoints <= 0)
         {
             _currentLevel++;
-            _currentPoints -= _pointsToUpdate;
+            //float remainder = _currentPoints - _pointsToUpdate;
             CalculatePoitsForNewLevel();
+            _currentPoints = _pointsToUpdate;
             CommonEvents.Instance.OnLevelChanged?.Invoke(_currentLevel, _pointsToUpdate, _currentPoints);
         }
     }
